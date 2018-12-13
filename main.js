@@ -44,7 +44,6 @@ function bindIPCEvents() {
   })
 
   ipcMain.on('showResource', (event, arg) => {
-    console.log(typeof arg, arg);
     const resource = (typeof arg === "object") ? JSON.stringify(arg, null, 4) : arg;
     createResourceWindow(resource);
   });
