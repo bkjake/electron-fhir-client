@@ -1,0 +1,23 @@
+{
+  "name": "fhir-client",
+  "productName": "fhir-client",
+  "description": "FHIR Client",
+  "keywords": [],
+  "main": "./main.js",
+  "version": "1.0.0",
+  "author": "bunyamin",
+  "scripts": {
+    "start": "electron .",
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icon.icns --prune=true --out=../fhir-client-release-builds",
+    "package-win": "electron-packager . fhir-client --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icon.ico --prune=true --out=../fhir-client-release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Electron Tutorial App\"",
+    "package-linux": "electron-packager . fhir-client --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icon.png --prune=true --out=../fhir-client-release-builds"
+  },
+  "dependencies": {
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.3.1"
+  },
+  "devDependencies": {
+    "electron": "2.0.7",
+    "electron-packager": "^13.0.0"
+  }
+}

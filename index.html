@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>FHIR Client</title>
+    <link rel="stylesheet" href="./font-awesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="./styles.css"/>
+    <style>
+      .temp-disabled {
+        opacity: .5 !important;
+        pointer-events: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="no-token">
+      <label style="width: auto !important; margin-bottom: .5em">Token</label> <br>
+      <input style="width: 20em" id="token-input"/>
+      <div class="buttons">
+        <button disabled id="manual-token">Use Token</button>
+        <button id="onauth-token">Get Token via OnAuth</button>
+        <button id="no-auth">No Authentication</button>
+        <br>
+        <button class="settings">Settings</button>
+      </div>
+    </div>
+    <div id="main" style="display: none">
+      <div class="buttons">
+        <button id="select-files">Add Files</button>
+        <button id="new-token">Change Token</button>
+        <button class="settings">Settings</button>
+      </div>
+      <div class="buttons">
+        <button id="toggle-all-none">Select All/None</button>
+        <button id="delete-selected">Remove Selected Files</button>
+        <button id="send-selected">Send Selected Files to Repository</button>
+      </div>
+    
+      <div id="configuration-error" style="display: none">
+        <a id="close-conf-error">&times;</a> Configuration file not exists or incorrect.
+      </div>
+      <div>
+        <ul id="files"></ul>
+      </div>
+    </div>
+    <script>
+      // You can also require other files to run in this process
+      require('./renderer.js')
+    </script>
+  </body>
+</html>

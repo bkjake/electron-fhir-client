@@ -1,0 +1,86 @@
+body {
+  /* background: rgba(116, 185, 255, .1); */
+}
+
+#no-token {
+  text-align: center;
+  width: 100%;
+  margin: 10em auto;
+}
+
+.buttons {
+  margin: 1em .5em;
+}
+
+.buttons button, .c-button {
+  margin: .3em;
+  padding: .5em;
+  border: 1px solid;
+  border-radius: .5em;
+  background: white;
+  cursor: pointer;
+  min-width: 7.5em;
+}
+
+.buttons button:not([disabled]):hover, .c-button:not([disabled]):hover {
+  background: #ddd;
+}
+
+
+.buttons button:focus, .c-button:focus {
+  outline: none;
+}
+
+
+.buttons button:focus:not(:hover), .c-button:focus:not(:hover) {
+  background: white;
+}
+
+input {
+  margin-bottom: .5em;
+}
+
+input:not([type=radio]):not([type=checkbox]) {
+  margin-bottom: .5em;
+  padding: .3em .5em;
+  border-radius: .3em;
+  border: 1px solid #ccc;
+}
+
+input:not([type=radio]):not([type=checkbox]).invalid {
+  border: 2px solid red;
+}
+
+label {
+  display: inline-block;
+  min-width: 5em;
+  margin-left: .3em;
+}
+
+#files {
+  list-style: none;
+  margin: .5em;
+  padding: 1em;
+  border: 1px solid #ccc;
+  border-radius: 1em;
+  background: #fcfcfc;
+}
+
+label[for] {
+  cursor: pointer;
+}
+
+#files li:not(:last-child) {
+  margin-bottom: .3em;
+  padding-bottom: .2em;
+  border-bottom: 1px solid #ddd;
+}
+
+#files li :not(i) {
+  font-weight: bold;
+}
+
+#files li a {
+  float: right;
+}
+

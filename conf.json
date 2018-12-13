@@ -1,0 +1,16 @@
+{
+  "host": "localhost",
+  "path": "/fhir/",
+  "port": 8080,
+  "protocol": "http",
+  "authOptions": {
+    "host": "localhost",
+    "authorizePath": "/onauth/api/authorize",
+    "tokenPath": "/onauth/api/token",
+    "port": 80,
+    "protocol": "http",
+    "redirectUri": "http://localhost/redirectUri",
+    "clientId": "client-id",
+    "scope": "profile openid offline_access user_claims other-custom-scopes"
+  }
+}

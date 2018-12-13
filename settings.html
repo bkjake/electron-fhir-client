@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Settings</title>
+    <link rel="stylesheet" href="./font-awesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="./styles.css"/>
+    <style>
+      .temp-disabled {
+        opacity: .5 !important;
+        pointer-events: none !important;
+      }
+      .invalid {
+        border: 2px solid red;
+      }
+      label {
+        min-width: 50% !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h5>FHIR Repository Settings</h5>
+      <br>
+      <label for="host">Host: </label> <input id="host"/>
+      <br>
+      <label for="path">Path: </label> <input id="path"/>
+      <br>
+      <label for="port">Port: </label> <input type="number" id="port"/>
+      <br>
+      <input type="radio" name="protocol" value="http" id="protocol-http"> <label for="protocol-http">HTTP</label>
+      <br>
+      <input type="radio" name="protocol" value="https" id="protocol-https"> <label for="protocol-https">HTTPS</label>
+      <br>
+      <h5>OnAuth Settings</h5>
+      <br>
+      <label for="auth-host">Host: </label> <input id="auth-host"/>
+      <br>
+      <label for="auth-port">Port: </label> <input type="number" id="auth-port"/>
+      <br>
+      <input type="radio" name="auth-protocol" value="http" id="auth-protocol-http"> <label for="auth-protocol-http">HTTP</label>
+      <br>
+      <input type="radio" name="auth-protocol" value="https" id="auth-protocol-https"> <label for="auth-protocol-https">HTTPS</label>
+      <br>
+      <label for="auth-authorize-path">Authorize Path: </label> <input id="auth-authorize-path"/>
+      <br>
+      <label for="auth-token-path">Token Path: </label> <input id="auth-token-path"/>
+      <br>
+      <h5>OnAuth Client Settings</h5>
+      <br>
+      <label for="auth-redirect-uri">Redirect URI: </label> <input id="auth-redirect-uri"/>
+      <br>
+      <label for="auth-client-id">Client ID: </label> <input id="auth-client-id"/>
+      <br>
+      <label for="auth-scope">Scope: </label> <input id="auth-scope"/>
+      <br>
+      <div class="buttons">
+        <button id="save">Save</button>
+        <button id="cancel">Cancel</button>
+      </div>
+      <div id="file-write-error" style="display: none">
+        Couldn't write configuration file. Configurations will be lost after closing the application.
+        <pre id="file-write-error-details"></pre>
+      </div>
+    </div>
+    <script>
+      // You can also require other files to run in this process
+      require('./settings-renderer.js')
+    </script>
+  </body>
+</html>
