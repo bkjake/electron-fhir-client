@@ -45,6 +45,9 @@ function pathToId(str) {
 }
 
 function addFilesToView(paths) {
+  if (paths.length) {
+    $("#files .ifEmptyList").remove();
+  }
   $("#files").append(
     paths.map(path => `
       <li id="item-${pathToId(path)}">
@@ -75,7 +78,7 @@ function addFilesToView(paths) {
 }
 
 function refreshFileList() {
-  $("#files").html("");
+  $("#files").html(`<li class="ifEmptyList" style="text-align: center">Click "Add Files" or Drag&amp;Drop Files to Here</li>`);
   addFilesToView(Object.keys(addedFiles));
   Object.keys(addedFiles).forEach(_path => {
     // console.log(_path, addedFiles[_path]);
@@ -94,6 +97,45 @@ function disableTemporarily(selector, _promise) {
     () => $(selector).removeClass("temp-disabled"),
     () => $(selector).removeClass("temp-disabled")
   );
+}
+
+function initDragAndDrop() {
+    var holder = document.getElementById('files');
+
+    holder.ondragover = () => {
+        holder.style.backgroundColor = "#ececec";
+        holder.style.borderColor = "#999";
+        return false;
+    };
+
+    holder.ondragleave = () => {
+        holder.style.backgroundColor = "#fcfcfc";
+        holder.style.borderColor = "#ccc";
+        return false;
+    };
+
+    holder.ondragend = () => {
+        holder.style.backgroundColor = "#fcfcfc";
+        holder.style.borderColor = "#ccc";
+        return false;
+    };
+
+    holder.ondrop = (e) => {
+        e.preventDefault();
+        holder.style.backgroundColor = "#fcfcfc";
+        holder.style.borderColor = "#ccc";
+        const filePaths = [];
+        for (let file of e.dataTransfer.files) {
+          addedFiles[file.path] = {
+            selected: true,
+            error: false,
+            put: false
+          };
+          filePaths.push(file.path);
+        }
+        addFilesToView(filePaths);
+        return false;
+    };
 }
 
 // Functions
@@ -208,6 +250,7 @@ function bindDOMEvents() {
     ipcRenderer.send("settings");
   });
 
+  initDragAndDrop();
 }
 // Main
 
