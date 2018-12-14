@@ -170,7 +170,7 @@ function createAuthWindow(_event) {
   authWindow.show();
 
   // handle when redirected with code and exchange it with token
-  authWindow.webContents.on('will-navigate', function (event,   newUrl) {
+  authWindow.webContents.on('did-navigate', function (event,   newUrl) {
     if (/code=([^&]+)/.test(newUrl)) {
       const code = /code=([^&]+)/.exec(newUrl)[1];
       const tokenRequestParams = generateTokenRequestUrl(code);
